@@ -1,0 +1,40 @@
+<?php
+/*
+* Template Name: Template - Home
+*/
+
+get_header(); ?>
+
+<div class="">
+	<div class="">
+		<div id="main-column" class="content-area">
+			<main id="main" class="site-main" role="main">
+                <?php if (have_posts()) {
+                    $Bsb4Design = new \BootstrapBasic4\Bsb4Design();
+                    while (have_posts()) {
+                        the_post();
+                        get_template_part('template-parts/content', 'page');
+                        echo "\n\n";
+
+                        $Bsb4Design->pagination();
+                        echo "\n\n";
+
+                        // If comments are open or we have at least one comment, load up the comment template
+                        if (comments_open() || '0' != get_comments_number()) {
+                            comments_template();
+                        }
+                        echo "\n\n";
+                    }// endwhile;
+
+                    
+                    unset($Bsb4Design);
+                } else {
+                    get_template_part('template-parts/section', 'no-results');
+                }// endif;
+                ?> 
+            </main>
+		</div>
+	</div>
+</div>
+
+<?php get_footer(); ?>
