@@ -679,6 +679,7 @@ defined( 'ABSPATH' ) or die("Cheating........Uh!!");
 							<td colspan="2">
 							<div>
 							<?php _e( 'Master control to enable standard sharing', 'sassy-social-share' ) ?>
+							<div style="clear:both"></div>
 							<img width="550" src="<?php echo plugins_url( '../../images/snaps/sss_horizontal_sharing.png', __FILE__ ); ?>" />
 							</div>
 							</td>
@@ -782,7 +783,7 @@ defined( 'ABSPATH' ) or die("Cheating........Uh!!");
 						</tbody>
 						<?php
 						$likeButtons = array( 'facebook_share', 'facebook_like', 'facebook_recommend', 'twitter_tweet', 'google_plusone', 'google_plus_share', 'linkedin_share', 'pinterest_pin', 'buffer_share', 'xing_share', 'yummly_share', 'reddit_badge' );
-						$sharingNetworks = array( 'facebook', 'twitter', 'linkedin', 'google_plus', 'print', 'email', 'reddit', 'digg', 'float_it', 'tumblr', 'vkontakte', 'pinterest', 'xing', 'whatsapp', 'instagram', 'yummly', 'buffer', 'AIM', 'Amazon_Wish_List', 'AOL_Mail', 'App.net', 'Balatarin', 'BibSonomy', 'Bitty_Browser', 'Blinklist', 'Blogger_Post', 'BlogMarks', 'Bookmarks.fr', 'Box.net', 'BuddyMarks', 'Care2_News', 'CiteULike', 'Comment', 'Copy_Link', 'Diary.Ru', 'Diaspora', 'Diigo', 'Douban', 'Draugiem', 'DZone', 'Evernote', 'Facebook_Messenger', 'Fark', 'Flipboard', 'Folkd', 'GentleReader', 'Google_Bookmarks', 'Google_Classroom', 'Google_Gmail', 'Hacker_News', 'Hatena', 'Instapaper', 'Jamespot', 'Kakao', 'Kik', 'Kindle_It', 'Known', 'Line', 'LiveJournal', 'Mail.Ru', 'Mendeley', 'Meneame', 'MeWe', 'mix', 'Mixi', 'MySpace', 'Netvouz', 'Odnoklassniki', 'Outlook.com', 'Papaly', 'Pinboard', 'Plurk', 'Pocket', 'PrintFriendly', 'Protopage_Bookmarks', 'Pusha', 'Qzone', 'Rediff MyPage', 'Refind', 'Renren', 'Sina Weibo', 'SiteJot', 'Skype', 'Slashdot', 'SMS', 'StockTwits', 'Svejo', 'Symbaloo_Feeds', 'Telegram', 'Threema', 'Trello', 'Tuenti', 'Twiddla', 'TypePad_Post', 'Viadeo', 'Viber', 'Wanelo', 'Webnews', 'WordPress', 'Wykop', 'Yahoo_Mail', 'Yoolink' );
+						$sharingNetworks = array( 'facebook', 'twitter', 'linkedin', 'google_plus', 'print', 'email', 'reddit', 'digg', 'float_it', 'tumblr', 'vkontakte', 'pinterest', 'xing', 'whatsapp', 'instagram', 'yummly', 'buffer', 'AIM', 'Amazon_Wish_List', 'AOL_Mail', 'App.net', 'Balatarin', 'BibSonomy', 'Bitty_Browser', 'Blinklist', 'Blogger_Post', 'BlogMarks', 'Bookmarks.fr', 'Box.net', 'BuddyMarks', 'Care2_News', 'CiteULike', 'Comment', 'Copy_Link', 'Diary.Ru', 'Diaspora', 'Diigo', 'Douban', 'Draugiem', 'DZone', 'Evernote', 'Facebook_Messenger', 'Fark', 'Fintel', 'Flipboard', 'Folkd', 'GentleReader', 'Google_Bookmarks', 'Google_Classroom', 'Google_Gmail', 'Hacker_News', 'Hatena', 'Instapaper', 'Jamespot', 'Kakao', 'Kik', 'Kindle_It', 'Known', 'Line', 'LiveJournal', 'Mail.Ru', 'Mendeley', 'Meneame', 'MeWe', 'mix', 'Mixi', 'MySpace', 'Netvouz', 'Odnoklassniki', 'Outlook.com', 'Papaly', 'Pinboard', 'Plurk', 'Pocket', 'PrintFriendly', 'Protopage_Bookmarks', 'Pusha', 'Qzone', 'Rediff MyPage', 'Refind', 'Renren', 'Sina Weibo', 'SiteJot', 'Skype', 'Slashdot', 'SMS', 'StockTwits', 'Svejo', 'Symbaloo_Feeds', 'Telegram', 'Threema', 'Trello', 'Tuenti', 'Twiddla', 'TypePad_Post', 'Viadeo', 'Viber', 'Wanelo', 'Webnews', 'WordPress', 'Wykop', 'Yahoo_Mail', 'Yoolink' );
 						?>
 						
 						<tr>
@@ -1498,6 +1499,24 @@ defined( 'ABSPATH' ) or die("Cheating........Uh!!");
 
 						<tr>
 							<th>
+							<img id="heateor_sss_hslider_help" class="heateor_sss_help_bubble" src="<?php echo plugins_url( '../../images/info.png', __FILE__ ) ?>" />
+							<label for="heateor_sss_hslider"><?php _e( "Hide floating slider", 'sassy-social-share' ); ?></label>
+							</th>
+							<td>
+							<input id="heateor_sss_hslider" name="heateor_sss[hide_slider]" type="checkbox" <?php echo isset( $options['hide_slider'] ) ? 'checked = "checked"' : '';?> value="1" />
+							</td>
+						</tr>
+						
+						<tr class="heateor_sss_help_content" id="heateor_sss_hslider_help_cont">
+							<td colspan="2">
+							<div>
+							<?php _e( 'Hides the slider arrow present below the floating share bar', 'sassy-social-share' ) ?>
+							</div>
+							</td>
+						</tr>
+
+						<tr>
+							<th>
 							<img id="heateor_sss_mobile_sharing_help" class="heateor_sss_help_bubble" src="<?php echo plugins_url( '../../images/info.png', __FILE__ ) ?>" />
 							<label for="heateor_sss_mobile_sharing"><?php _e("Vertical floating bar responsiveness", 'sassy-social-share' ); ?></label>
 							</th>
@@ -1917,7 +1936,7 @@ defined( 'ABSPATH' ) or die("Cheating........Uh!!");
 				<div class="heateor_sss_left_column">
 				<div class="stuffbox">
 					<h3><label><?php _e( 'Shortcode & Widget', 'sassy-social-share' );?></label></h3>
-					<div class="inside">
+					<div class="inside" style="padding-left:7px">
 						<p><a style="text-decoration:none" href="http://support.heateor.com/sassy-social-share-shortcode-and-widget" target="_blank"><?php _e( 'Shortcode & Widget', 'sassy-social-share' ) ?></a></p>
 					</div>
 				</div>
@@ -1930,7 +1949,7 @@ defined( 'ABSPATH' ) or die("Cheating........Uh!!");
 				<div class="heateor_sss_left_column">
 				<div class="stuffbox">
 					<h3><label><?php _e( 'Facebook Sharing Troubleshooter', 'sassy-social-share' );?></label></h3>
-					<div class="inside">
+					<div class="inside" style="padding-left:1px">
 					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="form-table editcomment menu_content_table">
 						<tr>
 							<td>
@@ -1950,7 +1969,7 @@ defined( 'ABSPATH' ) or die("Cheating........Uh!!");
 				<div class="heateor_sss_left_column">
 				<div class="stuffbox">
 					<h3><label><?php _e( 'FAQ', 'sassy-social-share' ) ?></label></h3>
-					<div class="inside faq">
+					<div class="inside faq" style="padding-left:8px">
 						<p><?php _e( '<strong>Note:</strong> Plugin will not work on local server. You should have an online website for the plugin to function properly.', 'sassy-social-share' ); ?></p>
 						<p>
 						<p><a href="http://support.heateor.com/why-is-sharer-not-showing-the-correct-image-title-and-other-meta-tags-content" target="_blank"><?php _e( 'Why is sharer not showing the correct image, title and other meta tags content?', 'sassy-social-share' ) ?></a></p>
@@ -1998,7 +2017,7 @@ defined( 'ABSPATH' ) or die("Cheating........Uh!!");
 
 			<div class="stuffbox">
 				<h3><label>Instagram Shoutout</label></h3>
-				<div class="inside">
+				<div class="inside" style="padding-left:7px">
 				<p><?php _e( 'If you can send (to hello@heateor.com) how our plugin is helping your business, we can share it on Instagram. You can also send any relevant hashtags and people to mention in the Instagram post.', 'sassy-social-share' ) ?></p>
 				<p><?php _e( '<b>Example</b> - Blah-Blah Online Coaching teaches various programming language courses through their website. They have emerged as one of the most popular online coaching websites in the past year. Anyone can become proficient in programming language of their choice in a very easy way in no time.', 'sassy-social-share' ) ?></p>
 				<p><?php _e( '@blahblahonlinecoaching proudly use #SassySocialShare to share content of their website. Be sure to visit their website at 

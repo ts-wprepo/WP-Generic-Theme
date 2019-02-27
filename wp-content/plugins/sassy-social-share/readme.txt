@@ -3,8 +3,8 @@ Contributors: Heateor
 Donate link: https://www.heateor.com/donate/?action=Sassy+Social+Share
 Tags: social share, social sharing, social media share, share facebook, facebook social share, wordpress social share, share buttons, social share buttons, facebook like, twitter tweet, google +1, google plus share
 Requires at least: 2.5.0
-Tested up to: 5.0.3
-Stable tag: 3.2.11
+Tested up to: 5.1
+Stable tag: 3.2.14
 License: GPLv2 or later
 
 Slickest, Simplest and Optimized Share buttons. Facebook, Twitter, Google+, Pinterest, WhatsApp and over 100 more.
@@ -124,6 +124,24 @@ Yes, we can help you with it. Just drop an email at support[at]heateor[dot]com
 4. **Universal Sharing Popup**: Universal Sharing popup having all the supported sharing and bookmarking services
 
 == Changelog ==
+= 3.2.14 =
+* [Bugfix] Alignment of rectangular social share buttons got worse after previous update
+* [New] Added Fintel.io social share icon
+
+= 3.2.13 =
+* [Bugfix] Center alignment for standard share icons was not working in some cases
+* [Bugfix] Enabling social share count was not taking effect for rectangular social share/like buttons
+* [Bugfix] Fixed mis-alignment of rectangular social share icons
+* [Bugfix] Xing share stopped working
+* [Bugfix] Whatsapp share was not working on Firefox and Safari browsers
+* [New] Added option to hide the slider present below the floating share bar
+* [Improvement] Improved the look of slider arrow below the floating share bar
+
+= 3.2.12 =
+* [New] Included MeWe in social media follow icons
+* [Bugfix] Social share icons stopped working in Classic mode of <a href="https://wordpress.org/plugins/amp">AMP</a> plugin after last update
+* [Improvement] Updated background color of Reddit icon according to Reddit branding guidelines
+
 = 3.2.11 =
 * [New] Included MeWe in social share networks
 * [New] Included Xing in social media follow icons
@@ -653,3 +671,21 @@ Yes, we can help you with it. Just drop an email at support[at]heateor[dot]com
 * [New] Included MeWe in social share networks
 * [New] Included Xing in social media follow icons
 * [Improvement] Added compatibility with Paired and Native modes of <a href="https://wordpress.org/plugins/amp">AMP</a> plugin
+
+= 3.2.12 =
+* [New] Included MeWe in social media follow icons
+* [Bugfix] Social share icons stopped working in Classic mode of <a href="https://wordpress.org/plugins/amp">AMP</a> plugin after last update
+* [Improvement] Updated background color of Reddit icon according to Reddit branding guidelines
+
+= 3.2.13 =
+* [Bugfix] Center alignment for standard share icons was not working in some cases
+* [Bugfix] Enabling social share count was not taking effect for rectangular social share/like buttons
+* [Bugfix] Fixed mis-alignment of rectangular social share icons
+* [Bugfix] Xing share stopped working
+* [Bugfix] Whatsapp share was not working on Firefox and Safari browsers
+* [New] Added option to hide the slider present below the floating share bar
+* [Improvement] Improved the look of slider arrow below the floating share bar
+
+= 3.2.14 =
+* [Bugfix] Alignment of rectangular social share buttons got worse after previous update
+* [New] Added Fintel.io social share icon

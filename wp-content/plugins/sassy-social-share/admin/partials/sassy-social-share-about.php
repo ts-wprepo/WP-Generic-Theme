@@ -4,7 +4,6 @@
 		<h3><label><?php _e( 'About', 'sassy-social-share' );?></label><label style="float:right"><?php _e( 'Version', 'sassy-social-share' );?> <?php echo $this->version; ?></label></h3>
 		<div class="inside">
 		<p><strong>Sassy Social Share</strong> <?php _e( 'by', 'sassy-social-share' ) ?> <strong><a href="//www.heateor.com" target="_blank">Heateor</a></strong></p>
-		<p><?php _e( 'We are a creative team with unique ideas in mind and service in heart. We love what we do. For more info join us at', 'sassy-social-share' ) ?></p>
 		<div style="height:32px">
 			<a href="//www.facebook.com/heateor" target="_blank" title="Facebook"><img style="box-shadow:1px 1px 10px 1px #888888" class="heateorSssLoginButton heateorSssFacebookButton" /></a>
 			<a href="//twitter.com/heateor" target="_blank" title="Twitter"><img style="box-shadow:1px 1px 10px 1px #888888" class="heateorSssLoginButton heateorSssTwitterButton" ></a>

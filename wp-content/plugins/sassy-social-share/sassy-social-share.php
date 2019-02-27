@@ -7,7 +7,7 @@
  * Plugin Name:       Sassy Social Share
  * Plugin URI:        https://www.heateor.com
  * Description:       Slickest, Simplest and Optimized Share buttons. Facebook, Twitter, Google+, Pinterest, WhatsApp and over 100 more.
- * Version:           3.2.11
+ * Version:           3.2.14
  * Author:            Team Heateor
  * Author URI:        https://www.heateor.com
  * Text Domain:       sassy-social-share
@@ -21,7 +21,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'HEATEOR_SSS_VERSION', '3.2.11' );
+define( 'HEATEOR_SSS_VERSION', '3.2.14' );
 define( 'HEATEOR_SSS_PLUGIN_DIR', plugin_dir_path(__FILE__) );
 
 // plugin core class object
@@ -89,7 +89,7 @@ function heateor_sss_save_default_options() {
 	   'title' => 'Spread the love',
 	   'comment_container_id' => 'respond',
 	   'instagram_username' => '',
-	   'horizontal_re_providers' => array( 'facebook', 'twitter', 'google_plus', 'linkedin', 'pinterest', 'reddit', 'mix', 'whatsapp' ),
+	   'horizontal_re_providers' => array( 'facebook', 'twitter', 'google_plus', 'linkedin', 'pinterest', 'MeWe', 'mix', 'whatsapp' ),
 	   'hor_sharing_alignment' => 'left',
 	   'top' => '1',
 	   'post' => '1',
@@ -100,7 +100,7 @@ function heateor_sss_save_default_options() {
 	   'vertical_target_url_custom' => '',
 	   'vertical_comment_container_id' => 'respond',
 	   'vertical_instagram_username' => '',
-	   'vertical_re_providers' => array( 'facebook', 'twitter', 'google_plus', 'linkedin', 'pinterest', 'reddit', 'mix', 'whatsapp' ),
+	   'vertical_re_providers' => array( 'facebook', 'twitter', 'google_plus', 'linkedin', 'pinterest', 'MeWe', 'mix', 'whatsapp' ),
 	   'vertical_bg' => '',
 	   'alignment' => 'left',
 	   'left_offset' => '-10',
@@ -140,6 +140,10 @@ function heateor_sss_save_default_options() {
  */
 function heateor_sss_activate_plugin( $network_wide ) {
 
+	if ( ! current_user_can( 'activate_plugins' ) ) {
+        return;
+    }
+
 	global $wpdb;
 
 	if ( function_exists( 'is_multisite' ) && is_multisite() ) {
@@ -157,6 +161,7 @@ function heateor_sss_activate_plugin( $network_wide ) {
 		}
 	}
 	heateor_sss_save_default_options();
+	set_transient( 'heateor-sss-admin-notice-on-activation', true, 5 );
 
 }
 register_activation_hook( __FILE__, 'heateor_sss_activate_plugin' );

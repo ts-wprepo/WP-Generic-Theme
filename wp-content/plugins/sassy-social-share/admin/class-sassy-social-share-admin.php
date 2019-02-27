@@ -59,8 +59,6 @@ class Sassy_Social_Share_Admin {
 		$page = add_menu_page( __( 'Sassy Social Share by Heateor', 'sassy-social-share' ), 'Sassy Social Share', 'manage_options', 'heateor-sss-options', array( $this, 'options_page' ), plugins_url( '../images/logo.png', __FILE__ ) );
 		// options
 		$options_page = add_submenu_page( 'heateor-sss-options', __( "Sassy Social Share - General Options", 'sassy-social-share' ), __( "Sassy Social Share", 'sassy-social-share' ), 'manage_options', 'heateor-sss-options', array( $this, 'options_page' ) );
-		// What's new (keep it for next release)
-		//$whats_new_page = add_submenu_page( 'heateor-sss-options', __( "Sassy Social Share - What's New", 'sassy-social-share' ), __( "What's New", 'sassy-social-share' ), 'manage_options', 'heateor-sss-whats-new', array( $this, 'whats_new_page' ) );
 		add_action( 'admin_print_scripts-' . $page, array( $this, 'admin_scripts' ) );
 		add_action( 'admin_print_scripts-' . $page, array( $this, 'admin_style' ) );
 		add_action( 'admin_print_scripts-' . $page, array( $this, 'fb_sdk_script' ) );
@@ -146,7 +144,7 @@ class Sassy_Social_Share_Admin {
 				<?php _e( 'Disable Floating Sharing interface on this ' . $postType, 'sassy-social-share' ) ?>
 			</label>
 			<?php
-			$valid_networks = array( 'facebook', 'twitter', 'linkedin', 'buffer', 'reddit', 'pinterest', 'vkontakte', 'Odnoklassniki' );
+			$valid_networks = array( 'facebook', 'twitter', 'linkedin', 'buffer', 'reddit', 'pinterest', 'vkontakte', 'Odnoklassniki', 'Fintel' );
 			if ( isset( $this->options['hor_enable'] ) && isset( $this->options['horizontal_counts'] ) && isset( $this->options['horizontal_re_providers'] ) && count( $this->options['horizontal_re_providers'] ) > 0 ) {
 				?>
 				<p>
@@ -241,18 +239,7 @@ class Sassy_Social_Share_Admin {
 	}
 
 	/**
-	 * "Whats's New" page.
-	 *
-	 * @since    1.0.0
-	 */	
-	public function whats_new_page() {
-
-		//wp_enqueue_script( 'heateor_sss_fb_sdk_script', plugins_url( '../admin/js/fb_sdk.js', __FILE__ ), false, $this->version );
-	
-	}
-
-	/**
-	 * Include Javascript at plugin options page in admin area.
+	 * Include Javascript at plugin options page in admin area
 	 *
 	 * @since    1.0.0
 	 */	
@@ -476,6 +463,14 @@ class Sassy_Social_Share_Admin {
 	public function show_notices() {
 		
 		if ( current_user_can( 'manage_options' ) ) {
+			if( get_transient( 'heateor-sss-admin-notice-on-activation' ) ) { ?>
+		        <div class="notice notice-success is-dismissible">
+		            <p><strong><?php printf( __( 'Thanks for installing Sassy Social Share plugin. Click <a href="%s">here</a> to configure plugin settings.', 'sassy-social-share' ), admin_url( 'admin.php?page=heateor-sss-options' ) ); ?></strong></p>
+		        </div> <?php
+		        /* Delete transient, only display this notice once. */
+		        delete_transient( 'heateor-sss-admin-notice-on-activation' );
+		    }
+
 			if ( defined( 'HEATEOR_SOCIAL_SHARE_MYCRED_INTEGRATION_VERSION' ) && version_compare( '1.3.3', HEATEOR_SOCIAL_SHARE_MYCRED_INTEGRATION_VERSION ) > 0 ) {
 				?>
 				<div class="error notice">
@@ -595,7 +590,7 @@ class Sassy_Social_Share_Admin {
 	    
 	    if ( is_array( $links ) ) {
 		    $addons_link = '<a href="https://www.heateor.com/add-ons" target="_blank">' . __( 'Add-Ons', 'sassy-social-share' ) . '</a>';
-		    $support_link = '<a href="http://support.heateor.com" target="_blank">' . __( 'Support Documentation', 'sassy-social-share' ) . '</a>';
+		    $support_link = '<br/><a href="http://support.heateor.com" target="_blank">' . __( 'Support Documentation', 'sassy-social-share' ) . '</a>';
 		    $settings_link = '<a href="admin.php?page=heateor-sss-options">' . __( 'Settings', 'sassy-social-share' ) . '</a>';
 		    
 		    // place it before other links

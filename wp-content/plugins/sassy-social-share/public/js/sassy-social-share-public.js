@@ -187,7 +187,7 @@ function heateorSssMoreSharingPopup(elem, postUrl, postTitle, twitterTitle){
 	  whatsapp: {
 		title: "Whatsapp",
 		locale: "en-US",
-		bookmarklet_url: "whatsapp://send?text=" + postTitle + " " + postUrl,
+		bookmarklet_url: "https://" + heateorSssWhatsappShareAPI + ".whatsapp.com/send?text=" + postTitle + " " + postUrl,
 	  },
 	  diigo: {
 		title: "Diigo",
@@ -279,6 +279,11 @@ function heateorSssMoreSharingPopup(elem, postUrl, postTitle, twitterTitle){
 		title: "Fark",
 		locale: "en-US",
 		redirect_url: "http://cgi.fark.com/cgi/fark/submit.pl?new_url=" + postUrl,
+	  },
+	  fintel: {
+		title: "Fintel",
+		locale: "en-US",
+		redirect_url: "https://fintel.io/submit?url=" + postUrl,
 	  },
 	  yummly: {
 		title: "Yummly",
@@ -509,6 +514,11 @@ function heateorSssMoreSharingPopup(elem, postUrl, postTitle, twitterTitle){
 		title: "Wykop",
 		locale: "en-US",
 		redirect_url: "//www.wykop.pl/dodaj?url=" + postUrl + "&title=" + postTitle,
+	  },
+	  Xing: {
+		title: "Xing",
+		locale: "en-US",
+		redirect_url: "https://www.xing.com/spi/shares/new?cb=0&url=" + postUrl,
 	  },
 	  Yoolink: {
 		title: "Yoolink",
