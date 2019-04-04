@@ -4,7 +4,7 @@ Donate link: https://www.heateor.com/donate/?action=Sassy+Social+Share
 Tags: social share, social sharing, social media share, share facebook, facebook social share, wordpress social share, share buttons, social share buttons, facebook like, twitter tweet, google +1, google plus share
 Requires at least: 2.5.0
 Tested up to: 5.1
-Stable tag: 3.2.14
+Stable tag: 3.2.17
 License: GPLv2 or later
 
 Slickest, Simplest and Optimized Share buttons. Facebook, Twitter, Google+, Pinterest, WhatsApp and over 100 more.
@@ -25,7 +25,7 @@ This is the Simplest and Smoothest Social Sharing plugin with optimized and grea
 * Compatible with myCRED (append myCRED referral ID at the end of the url being shared)
 * Around **100 Social Sharing/Bookmarking** services
 * Social Media follow icons (Redirect website visitors to your Social Media pages)
-* Share counts are supported for Facebook, Linkedin, Twitter, Buffer, Reddit, Pinterest, Odnoklassniki and Vkontakte
+* Share counts are supported for Facebook, Linkedin, Twitter, Buffer, Reddit, Pinterest, Odnoklassniki, Fintel and Vkontakte
 * FREE **Icon Customization** options
 * Options to specify sharing icon shape - Square, Round and Rectangular
 * Options to specify sharing icon size - minimum 16 pixels, no upper limit
@@ -124,6 +124,16 @@ Yes, we can help you with it. Just drop an email at support[at]heateor[dot]com
 4. **Universal Sharing Popup**: Universal Sharing popup having all the supported sharing and bookmarking services
 
 == Changelog ==
+= 3.2.17 =
+* [Bugfix] Previous update was generating Javascript error when Whatsapp share icon was not enabled
+
+= 3.2.16 =
+* [Bugfix] Minor bugfix in Whatsapp share
+
+= 3.2.15 =
+* [New] Twitter sharer shows title from "Twitter Title" option of Yoast Premium SEO post meta options, if one is specified
+* [Bugfix] Whatsapp share was not working in some cases with server cache enabled
+
 = 3.2.14 =
 * [Bugfix] Alignment of rectangular social share buttons got worse after previous update
 * [New] Added Fintel.io social share icon
@@ -689,3 +699,13 @@ Yes, we can help you with it. Just drop an email at support[at]heateor[dot]com
 = 3.2.14 =
 * [Bugfix] Alignment of rectangular social share buttons got worse after previous update
 * [New] Added Fintel.io social share icon
+
+= 3.2.15 =
+* [New] Twitter sharer shows title from "Twitter Title" option of Yoast Premium SEO post meta options, if one is specified
+* [Bugfix] Whatsapp share was not working in some cases with server cache enabled
+
+= 3.2.16 =
+* [Bugfix] Minor bugfix in Whatsapp share
+
+= 3.2.17 =
+* [Bugfix] Previous update was generating Javascript error when Whatsapp share icon was not enabled

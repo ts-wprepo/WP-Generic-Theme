@@ -933,7 +933,7 @@ class Sassy_Social_Share_Public {
 	 */
 	public function wpseo_twitter_title( $post ) {
 
-		if ( $post && $this->is_plugin_active( 'wordpress-seo/wp-seo.php' ) && ( $wpseo_twitter_title = WPSEO_Meta::get_value( 'twitter-title', $post->ID ) ) ) {
+		if ( $post && ( $this->is_plugin_active( 'wordpress-seo/wp-seo.php' ) || $this->is_plugin_active( 'wordpress-seo-premium/wp-seo.php' ) ) && ( $wpseo_twitter_title = WPSEO_Meta::get_value( 'twitter-title', $post->ID ) ) ) {
 			return $wpseo_twitter_title;
 		}
 		return '';

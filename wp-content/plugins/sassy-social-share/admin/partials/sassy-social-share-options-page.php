@@ -1024,7 +1024,7 @@ defined( 'ABSPATH' ) or die("Cheating........Uh!!");
 							<td>
 							<input id="heateor_sss_counts" name="heateor_sss[horizontal_counts]" type="checkbox" <?php echo isset( $options['horizontal_counts'] ) ? 'checked = "checked"' : '';?> value="1" />
 							<br/>
-							<span class="heateor_sss_help_content" style="display:block"><?php _e( 'Share counts are supported for Facebook, Twitter, Linkedin, Buffer, Reddit, Pinterest, Odnoklassniki and Vkontakte', 'sassy-social-share' ) ?></span>
+							<span class="heateor_sss_help_content" style="display:block"><?php _e( 'Share counts are supported for Facebook, Twitter, Linkedin, Buffer, Reddit, Pinterest, Odnoklassniki, Fintel and Vkontakte', 'sassy-social-share' ) ?></span>
 							<span class="heateor_sss_help_content" style="display:block"><strong><?php echo sprintf( __( 'To show Twitter share count, you have to click "Give me my Twitter counts back" button at <a href="%s" target="_blank">TwitCount.com</a> and register your website %s with them. No need to copy-paste any code from their website.', 'sassy-social-share' ), 'http://twitcount.com', home_url() ) ?></strong></span>
 							</td>
 						</tr>
@@ -1446,7 +1446,7 @@ defined( 'ABSPATH' ) or die("Cheating........Uh!!");
 							<td>
 							<input id="heateor_sss_vertical_counts" name="heateor_sss[vertical_counts]" type="checkbox" <?php echo isset( $options['vertical_counts'] ) ? 'checked = "checked"' : '';?> value="1" />
 							<br/>
-							<span class="heateor_sss_help_content" style="display:block"><?php _e( 'Share counts are supported for Facebook, Twitter, Linkedin, Buffer, Reddit, Pinterest, Odnoklassniki and Vkontakte', 'sassy-social-share' ) ?></span>
+							<span class="heateor_sss_help_content" style="display:block"><?php _e( 'Share counts are supported for Facebook, Twitter, Linkedin, Buffer, Reddit, Pinterest, Odnoklassniki, Fintel and Vkontakte', 'sassy-social-share' ) ?></span>
 							<span class="heateor_sss_help_content" style="display:block"><strong><?php echo sprintf( __( 'To show Twitter share count, you have to click "Give me my Twitter counts back" button at <a href="%s" target="_blank">TwitCount.com</a> and register your website %s with them. No need to copy-paste any code from their website.', 'sassy-social-share' ), 'http://twitcount.com', home_url() ) ?></strong></span>
 							</td>
 						</tr>

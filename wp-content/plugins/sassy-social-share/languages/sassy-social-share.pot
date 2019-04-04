@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Sassy Social Share\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-22 09:58+0530\n"
-"PO-Revision-Date: 2019-02-22 09:58+0530\n"
+"POT-Creation-Date: 2019-03-01 08:23+0530\n"
+"PO-Revision-Date: 2019-03-01 08:24+0530\n"
 "Last-Translator: Heateor <hello@heateor.com>\n"
 "Language-Team: Heateor <hello@heateor.com>\n"
 "Language: en_IN\n"
@@ -65,20 +65,21 @@ msgid "Dismiss this notice"
 msgstr ""
 
 #: ../admin/class-sassy-social-share-admin.php:468
-#, php-format
-msgid ""
-"Thanks for installing Sassy Social Share plugin. Click <a href=\"%s\">here</"
-"a> to configure plugin settings."
+msgid "Thanks for installing Sassy Social Share plugin"
 msgstr ""
 
-#: ../admin/class-sassy-social-share-admin.php:478
+#: ../admin/class-sassy-social-share-admin.php:470
+msgid "Configure the Plugin"
+msgstr ""
+
+#: ../admin/class-sassy-social-share-admin.php:481
 msgid ""
 "Update \"Social Share myCRED Integration\" add-on for maximum compatibility "
 "with current version of Sassy Social Share"
 msgstr ""
 
-#: ../admin/class-sassy-social-share-admin.php:502
-#: ../admin/class-sassy-social-share-admin.php:575
+#: ../admin/class-sassy-social-share-admin.php:505
+#: ../admin/class-sassy-social-share-admin.php:578
 #, php-format
 msgid ""
 "This plugin is GDPR compliant. You need to update the privacy policy of your "
@@ -86,14 +87,14 @@ msgid ""
 "\"%s\" target=\"_blank\">here</a>"
 msgstr ""
 
-#: ../admin/class-sassy-social-share-admin.php:502
-#: ../admin/class-sassy-social-share-admin.php:528
-#: ../admin/class-sassy-social-share-admin.php:551
-#: ../admin/class-sassy-social-share-admin.php:575
+#: ../admin/class-sassy-social-share-admin.php:505
+#: ../admin/class-sassy-social-share-admin.php:531
+#: ../admin/class-sassy-social-share-admin.php:554
+#: ../admin/class-sassy-social-share-admin.php:578
 msgid "Okay"
 msgstr ""
 
-#: ../admin/class-sassy-social-share-admin.php:528
+#: ../admin/class-sassy-social-share-admin.php:531
 #, php-format
 msgid ""
 "Twitter share counts are no longer working as newsharecounts.com is down. To "
@@ -101,7 +102,7 @@ msgid ""
 "\"_blank\">here</a> with this domain. No other steps needed."
 msgstr ""
 
-#: ../admin/class-sassy-social-share-admin.php:551
+#: ../admin/class-sassy-social-share-admin.php:554
 #, php-format
 msgid ""
 "Now plugin supports a new service Twitcount.com to show Twitter shares. To "
@@ -110,15 +111,15 @@ msgid ""
 "your website %s with them. No need to copy-paste any code from their website."
 msgstr ""
 
-#: ../admin/class-sassy-social-share-admin.php:592
+#: ../admin/class-sassy-social-share-admin.php:595
 msgid "Add-Ons"
 msgstr ""
 
-#: ../admin/class-sassy-social-share-admin.php:593
+#: ../admin/class-sassy-social-share-admin.php:596
 msgid "Support Documentation"
 msgstr ""
 
-#: ../admin/class-sassy-social-share-admin.php:594
+#: ../admin/class-sassy-social-share-admin.php:597
 msgid "Settings"
 msgstr ""
 
@@ -594,7 +595,7 @@ msgstr ""
 #: ../admin/partials/sassy-social-share-options-page.php:1449
 msgid ""
 "Share counts are supported for Facebook, Twitter, Linkedin, Buffer, Reddit, "
-"Pinterest, Odnoklassniki and Vkontakte"
+"Pinterest, Odnoklassniki, Fintel and Vkontakte"
 msgstr ""
 
 #: ../admin/partials/sassy-social-share-options-page.php:1028
@@ -1351,7 +1352,7 @@ msgid "Archives"
 msgstr ""
 
 #: ../public/class-sassy-social-share-public.php:1509
-#: ../public/class-sassy-social-share-public.php:1730
+#: ../public/class-sassy-social-share-public.php:1740
 msgid "Invalid request"
 msgstr ""
 

@@ -133,8 +133,12 @@ function generic_login_head() {
 		$admin_logo_width = get_field('admin_logo_width', 'option');
 		$admin_logo_height = get_field('admin_logo_height', 'option');
 		$admin_background_color = get_field('admin_background_colour', 'option');
-		$admin_logo = ($admin_login_logo != '') ? $admin_login_logo : get_stylesheet_directory_uri()."/img/admin-logo.png"; 
-		$admin_background_color = ($admin_background_color != '') ? $admin_background_color : "#fff"; 
+		$admin_form_background_color = get_field('admin_form_background_color', 'option');
+		$admin_form_text_color = get_field('admin_form_text_color', 'option');
+		$admin_logo = ($admin_login_logo != '') ? $admin_login_logo : get_stylesheet_directory_uri()."/assets/img/admin-logo.png";
+		$admin_background_color = ($admin_background_color != '') ? $admin_background_color : "#fff";
+		$admin_form_background_color = ($admin_form_background_color != '') ? $admin_form_background_color : "#fff";
+		$admin_form_text_color = ($admin_form_text_color != '') ? $admin_form_text_color : "#72777c";
 		echo "<style>
 		body.login div#login h1 a {
 			background-image: url('".$admin_logo."') !important;
@@ -144,7 +148,9 @@ function generic_login_head() {
 			height: ".(!empty($admin_logo_height) ? $admin_logo_height.'px' : '80px')." !important;
 		}
 		html, body { background: ".$admin_background_color." !important; }
-		.login .message, .login form { -webkit-box-shadow: 2px 0 4px 4px rgba(0, 0, 0, 0.1) !important; box-shadow: 2px 0 4px 4px rgba(0, 0, 0, 0.1) !important; }
+		.login form { background: ".$admin_form_background_color." !important; }
+		.login label { color: ".$admin_form_text_color." !important; }
+		.login .message, .login form { -webkit-box-shadow: 0 1px ".$admin_background_color." inset, 0 1px 3px rgba(34, 25, 25, 0.4); box-shadow: 0 1px ".$admin_background_color." inset, 0 1px 3px rgba(34, 25, 25, 0.4); }
 		</style>";
 	}
 }
@@ -154,8 +160,8 @@ add_action( 'admin_head', 'favicon' );
 add_action( 'login_head', 'favicon' );
 function favicon() {
 	$fav_icon = get_field('favicon', 'option');
-	$favicon = ($fav_icon != '') ? $fav_icon : get_stylesheet_directory_uri()."/img/favicon.ico"; 
-	if($favicon != '') echo '<link rel="shortcut icon" type="image/png" sizes="32x32" href="'.$favicon.'"/><link rel="apple-touch-icon" sizes="152x152" href="'.get_stylesheet_directory_uri().'/img/apple-touch-icon.png">';
+	$favicon = ($fav_icon != '') ? $fav_icon : get_stylesheet_directory_uri()."/assets/img/favicon/favicon.ico"; 
+	if($favicon != '') echo '<link rel="shortcut icon" type="image/png" sizes="32x32" href="'.$favicon.'"/><link rel="apple-touch-icon" sizes="180x180" href="'.get_stylesheet_directory_uri().'/assets/img/favicon/apple-touch-icon.png">';
 }
 
 function all_year() {
@@ -353,6 +359,7 @@ function get_banner(){
 		endif;
 		$header_default_img = get_field('page_header_default_image', 'options');
 		$header_bg_color = get_field('page_header_background_color', 'options');
+		$headers_overlay = get_field('page_headers_overlay', 'options');
 		$use_default_header_img = get_field('use_default_header_image', $post_id);
 		$page_header_image = get_field('page_header_image', $post_id);
 		$header_style = '';
@@ -362,10 +369,10 @@ function get_banner(){
 			$header_img = $page_header_image;
 		}
 		$header_style .= ' style="background-color: '.$header_bg_color.';';
-		$header_style .= ( !empty( $header_img ) ? 'background-image: url('.$header_img.');' : '' );
+		$header_style .= ( !empty( $header_img ) ? 'background-image: url('.$header_img.');background-position: '.$image_position.';' : '' );
 		$header_style .= '"';
 
-		$banner .= '<div class="page-header-bar"'.$header_style.'>';
+		$banner .= '<div class="page-header-bar'.($headers_overlay ? ' header-overlay': '').'"'.$header_style.'>';
 			$banner .= '<div class="container">';
 				$banner .= '<div class="heading-strip">';
 					$banner .= '<h1 class="">';

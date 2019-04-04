@@ -464,8 +464,11 @@ class Sassy_Social_Share_Admin {
 		
 		if ( current_user_can( 'manage_options' ) ) {
 			if( get_transient( 'heateor-sss-admin-notice-on-activation' ) ) { ?>
-		        <div class="notice notice-success is-dismissible">
-		            <p><strong><?php printf( __( 'Thanks for installing Sassy Social Share plugin. Click <a href="%s">here</a> to configure plugin settings.', 'sassy-social-share' ), admin_url( 'admin.php?page=heateor-sss-options' ) ); ?></strong></p>
+		        <div class="sassy-social-share-message notice notice-success is-dismissible">
+		            <p><strong><?php printf( __( 'Thanks for installing Sassy Social Share plugin', 'sassy-social-share' ), 'http://support.heateor.com/configure-sassy-social-share' ); ?></strong></p>
+		            <p>
+						<a href="http://support.heateor.com/configure-sassy-social-share" target="_blank" class="button button-primary"><?php _e( 'Configure the Plugin', 'sassy-social-share' ); ?></a>
+					</p>
 		        </div> <?php
 		        /* Delete transient, only display this notice once. */
 		        delete_transient( 'heateor-sss-admin-notice-on-activation' );
