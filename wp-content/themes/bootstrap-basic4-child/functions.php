@@ -27,6 +27,8 @@ if (!isset($bootstrapbasic4_title_separator)) {
 
 // Require, include files - child theme
 require get_stylesheet_directory() . '/inc/functions/include-functions.php';
+require get_stylesheet_directory() . '/inc/classes/Bsb4Design.php';
+require get_stylesheet_directory() . '/inc/classes/BootstrapBasic4WalkerNavMenu.php';
 
 function remove_scripts() {
 	$parent_style = 'bootstrap-basic4-wp-main';
@@ -34,8 +36,8 @@ function remove_scripts() {
 	wp_deregister_style( $parent_style );
 
 	/*remove fa v5*/
-	// wp_dequeue_style( 'bootstrap-basic4-font-awesome5' );
-	// wp_deregister_style( 'bootstrap-basic4-font-awesome5' );
+	wp_dequeue_style( 'bootstrap-basic4-font-awesome5' );
+	wp_deregister_style( 'bootstrap-basic4-font-awesome5' );
 
 	// wp_dequeue_script( 'site' );
 	// wp_deregister_script( 'site' );
@@ -48,13 +50,13 @@ function childThemeEnqueueScripts() {
 	wp_enqueue_style($parent_style, get_template_directory_uri() . '/style.css' );
 	wp_enqueue_style('bootstrap-basic4-child-style', get_stylesheet_directory_uri() . '/style.css', array( $parent_style ), wp_get_theme()->get('Version') );
 
-   // wp_enqueue_style('fontawesome-style', get_stylesheet_directory_uri() . '/assets/css/font-awesome.min.css', array(), '4.7.0');
+   wp_enqueue_style('fontawesome-style', get_stylesheet_directory_uri() . '/assets/css/font-awesome.min.css', array(), '4.7.0');
 	/*wp_enqueue_style('slick', get_stylesheet_directory_uri() . '/assets/js/slick/slick.css');
 	wp_enqueue_style('slick-theme', get_stylesheet_directory_uri() . '/assets/js/slick/slick-theme.css');*/
 	wp_enqueue_style('child-main-style', get_stylesheet_directory_uri() . '/assets/css/main.css');
 	wp_enqueue_style('app-style', get_stylesheet_directory_uri() . '/assets/css/app-style.css');
 
-	/*wp_enqueue_script('slick-script', get_stylesheet_directory_uri() . '/assets/js/slick/slick.min.js', array(), '1.9.0', true);*/
+	/*wp_enqueue_script('slick-script', get_stylesheet_directory_uri() . '/assets/js/slick/slick.min.js', array(), '1.8.0', true);*/
 	wp_enqueue_script('child-main-script', get_stylesheet_directory_uri() . '/assets/js/main.js', array(), false, true);
 }
 add_action('wp_enqueue_scripts', 'childThemeEnqueueScripts', 11);
@@ -117,6 +119,15 @@ if( function_exists('acf_add_options_page') ) {
 		'capability'    => 'edit_posts',
 		'redirect'      => false
 	));
+	/*acf_add_options_page(array(
+		'page_title'    => 'Testimonials',
+		'menu_title'    => 'Testimonials',
+		'menu_slug'     => 'testimonials',
+		'capability'    => 'edit_posts',
+		'redirect'      => false,
+		'position'      => 25,
+		'icon_url'      => 'dashicons-format-quote'
+	));*/
 }
 
 function cc_mime_types($mimes) {
@@ -351,7 +362,11 @@ if (!function_exists('get_breadcrumb')) {
 function get_banner(){
 	global $post;
 	$banner = '';
-	if(!is_front_page()){
+	if(!is_front_page()) {
+		$enable_page_header = get_field('enable_page_header', 'options');
+		if(empty($enable_page_header)) {
+			return '';
+		}
 		if(is_home()):
 			$post_id = get_option( 'page_for_posts' );
 		else:
@@ -360,13 +375,12 @@ function get_banner(){
 		$header_default_img = get_field('page_header_default_image', 'options');
 		$header_bg_color = get_field('page_header_background_color', 'options');
 		$headers_overlay = get_field('page_headers_overlay', 'options');
-		$use_default_header_img = get_field('use_default_header_image', $post_id);
 		$page_header_image = get_field('page_header_image', $post_id);
 		$header_style = '';
-		if($use_default_header_img) {
-			$header_img = $header_default_img;
-		} else {
+		if(!empty($page_header_image)) {
 			$header_img = $page_header_image;
+		} else {
+			$header_img = $header_default_img;
 		}
 		$header_style .= ' style="background-color: '.$header_bg_color.';';
 		$header_style .= ( !empty( $header_img ) ? 'background-image: url('.$header_img.');background-position: '.$image_position.';' : '' );
@@ -400,3 +414,25 @@ function get_banner(){
 	return  $banner;
 }
 add_shortcode('do_banner', 'get_banner');
+
+/*testimonials*/
+function get_testimonials() {
+	$content = '';
+	$slide_cnt = 1;
+	if( have_rows('testimonials', 'options') ) {
+		$content .= '<div id="testimonial-slider" class="slide-cnt-'.$slide_cnt.'">';
+		while ( have_rows('testimonials', 'options') ) : the_row();
+			$content .= '<div class="testimonial-item">';
+				$content .= '<div class="t-content">'.get_sub_field('testimonial_content').'</div>';
+				$content .= '<div class="t-user">'.get_sub_field('user_name').'</div>';
+				$content .= '<div class="t-user-info">'.get_sub_field('user_info').'</div>';
+			$content .= '</div>';
+			$slide_cnt++;
+		endwhile;
+		$content .= '</div>';
+	} else {
+		$content .= '<p>No Testimonials...</p>';
+	}
+	return $content;
+}
+add_shortcode('do_testimonials', 'get_testimonials');

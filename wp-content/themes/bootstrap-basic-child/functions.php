@@ -20,7 +20,7 @@ function childThemeEnqueueScripts() {
 	wp_enqueue_style('child-main-style', get_stylesheet_directory_uri() . '/css/main.css');
 	wp_enqueue_style('app-style', get_stylesheet_directory_uri() . '/css/app-style.css');
 
-	/*wp_enqueue_script('slick-script', get_stylesheet_directory_uri() . '/js/slick/slick.min.js', array(), '1.9.0', true);*/
+	/*wp_enqueue_script('slick-script', get_stylesheet_directory_uri() . '/js/slick/slick.min.js', array(), '1.8.0', true);*/
 	wp_enqueue_script('child-main-script', get_stylesheet_directory_uri() . '/js/main.js', array(), false, true);
 }
 add_action('wp_enqueue_scripts', 'childThemeEnqueueScripts', 12);
@@ -107,6 +107,15 @@ if( function_exists('acf_add_options_page') ) {
 		'capability'    => 'edit_posts',
 		'redirect'      => false
 	));
+	/*acf_add_options_page(array(
+		'page_title'    => 'Testimonials',
+		'menu_title'    => 'Testimonials',
+		'menu_slug'     => 'testimonials',
+		'capability'    => 'edit_posts',
+		'redirect'      => false,
+		'position'      => 25,
+		'icon_url'      => 'dashicons-format-quote'
+	));*/
 }
 
 function cc_mime_types($mimes) {
@@ -341,7 +350,11 @@ if (!function_exists('get_breadcrumb')) {
 function get_banner(){
 	global $post;
 	$banner = '';
-	if(!is_front_page()){
+	if(!is_front_page()) {
+		$enable_page_header = get_field('enable_page_header', 'options');
+		if(empty($enable_page_header)) {
+			return '';
+		}
 		if(is_home()):
 			$post_id = get_option( 'page_for_posts' );
 		else:
@@ -350,13 +363,12 @@ function get_banner(){
 		$header_default_img = get_field('page_header_default_image', 'options');
 		$header_bg_color = get_field('page_header_background_color', 'options');
 		$headers_overlay = get_field('page_headers_overlay', 'options');
-		$use_default_header_img = get_field('use_default_header_image', $post_id);
 		$page_header_image = get_field('page_header_image', $post_id);
 		$header_style = '';
-		if($use_default_header_img) {
-			$header_img = $header_default_img;
-		} else {
+		if(!empty($page_header_image)) {
 			$header_img = $page_header_image;
+		} else {
+			$header_img = $header_default_img;
 		}
 		$header_style .= ' style="background-color: '.$header_bg_color.';';
 		$header_style .= ( !empty( $header_img ) ? 'background-image: url('.$header_img.');background-position: '.$image_position.';' : '' );
@@ -390,3 +402,25 @@ function get_banner(){
 	return  $banner;
 }
 add_shortcode('do_banner', 'get_banner');
+
+/*testimonials*/
+function get_testimonials() {
+	$content = '';
+	$slide_cnt = 1;
+	if( have_rows('testimonials', 'options') ) {
+		$content .= '<div id="testimonial-slider" class="slide-cnt-'.$slide_cnt.'">';
+		while ( have_rows('testimonials', 'options') ) : the_row();
+			$content .= '<div class="testimonial-item">';
+				$content .= '<div class="t-content">'.get_sub_field('testimonial_content').'</div>';
+				$content .= '<div class="t-user">'.get_sub_field('user_name').'</div>';
+				$content .= '<div class="t-user-info">'.get_sub_field('user_info').'</div>';
+			$content .= '</div>';
+			$slide_cnt++;
+		endwhile;
+		$content .= '</div>';
+	} else {
+		$content .= '<p>No Testimonials...</p>';
+	}
+	return $content;
+}
+add_shortcode('do_testimonials', 'get_testimonials');

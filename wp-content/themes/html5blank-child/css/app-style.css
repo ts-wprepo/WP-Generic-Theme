@@ -1,3 +1,4 @@
+@charset "utf-8";
 htm, body { width: 100%; padding: 0; margin: 0; font-family: 'Arial', sans-serif; font-size: 16px; line-height: 1.4; text-shadow: none; }
 body { font-smoothing: antialiased; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; outline: 0; margin: 0; }
 *, ::after, ::before, input[type="search"] { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
@@ -166,30 +167,38 @@ form.search .input-group-btn button:hover, form.search .input-group-btn button:h
 /* ------------------------------- */
 /* --------- media query --------- */
 /* ------------------------------- */
-@media (min-width: 1300px) {
+@media (min-width: 576px) {
 
 }
-@media (min-width: 1200px) {
-
-}
-@media (max-width: 1199px) {
-
-}
-@media (min-width: 992px) and (max-width: 1199px) {
+@media (min-width: 768px) {
 
 }
 @media (min-width: 992px) {
 
 }
-@media (max-width: 991px) {
-	.error-404 h1 { font-size: 120px; }
-	.error-404 h2 { font-size: 24px; }
+@media (min-width: 1200px) {
+
+}
+@media (min-width: 1300px) {
+
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+
 }
 @media (min-width: 768px) and (max-width: 991px) {
 
 }
-@media (min-width: 768px) {
+@media (min-width: 576px) and (max-width: 767px) {
 
+}
+
+@media (max-width: 1199px) {
+
+}
+@media (max-width: 991px) {
+	.error-404 h1 { font-size: 120px; }
+	.error-404 h2 { font-size: 24px; }
 }
 @media (max-width: 767px) {
 
@@ -198,12 +207,6 @@ form.search .input-group-btn button:hover, form.search .input-group-btn button:h
 	article .alignright, article .alignleft { display: block; float: none; width: auto; margin-top: 20px; }
 	article .alignright { margin-left: 0; }
 	article .alignleft { margin-right: 0; }
-}
-@media (min-width: 576px) and (max-width: 767px) {
-
-}
-@media (min-width: 576px) {
-
 }
 @media (max-width: 575px) {
 	.copyrights p, .website-by p { text-align: center; }

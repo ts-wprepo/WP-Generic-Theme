@@ -9,7 +9,7 @@ $main_column_size = getMainColumnSize();
 	<div class="row">
 		<?php get_sidebar('left'); ?> 
 		<div id="main-column" class="col-md-<?php echo $main_column_size; ?> content-area">
-			<main id="main" class="site-main" role="main">
+			<main id="main" class="site-main search-result" role="main">
 				<!-- section -->
 				<section>
 

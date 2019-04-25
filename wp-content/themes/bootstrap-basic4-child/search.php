@@ -3,7 +3,7 @@
     <div class="row">
         <?php get_sidebar('left'); ?>
         <div id="main-column" class="col-md-<?php echo \BootstrapBasic4\Bootstrap4Utilities::getMainColumnSize(); ?> content-area">
-            <main id="main" class="site-main" role="main">
+            <main id="main" class="site-main search-result" role="main">
                 <?php if (have_posts()) { ?> 
                     <header class="page-header">
                         <h1 class="page-title"><?php 

@@ -16,7 +16,7 @@ $main_column_size = bootstrapBasicGetMainColumnSize();
 	<div class="row">
 		<?php get_sidebar('left'); ?> 
 		<div id="main-column" class="col-md-<?php echo $main_column_size; ?> content-area">
-			<main id="main" class="site-main" role="main">
+			<main id="main" class="site-main search-result" role="main">
 				<?php if (have_posts()) { ?> 
 				<header class="page-header">
 					<h2 class="page-title"><?php 

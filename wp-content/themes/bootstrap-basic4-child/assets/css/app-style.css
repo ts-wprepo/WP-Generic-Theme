@@ -1,3 +1,4 @@
+@charset "utf-8";
 htm, body { width: 100%; padding: 0; margin: 0; font-family: 'Arial', sans-serif; font-size: 16px; line-height: 1.4; text-shadow: none; }
 body { font-smoothing: antialiased; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; outline: 0; margin: 0; }
 body img { max-width: 100%; height: auto; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -o-user-select: none; -ms-user-select: none; user-select: none; }
@@ -115,7 +116,7 @@ form.search-form input[type="search"] { height: 46px; width: 100%; font-size: 15
 form.search-form input[type="search"]:focus { border-color: #000; background-color: #fff; }
 form.search-form .input-group-btn { position: absolute; display: inline-block; top: 2px; right: 2px; bottom: 2px; width: 42px; text-align: right; z-index: 9; }
 form.search-form .input-group-btn button { font-size: 0; width: 42px; height: 42px; border: 0; padding: 5px 8px; background: transparent; color: #322f31; text-align: center; text-shadow: none; border-radius: 0; outline: none !important; box-shadow: none !important; -webkit-transition: all 0.3s ease-in-out; -moz-transition: all 0.3s ease-in-out; -ms-transition: all 0.3s ease-in-out; transition: all 0.3s ease-in-out; }
-form.search-form .input-group-btn button::before { content: "\f002"; color: #000; display: inline-block; font: normal normal normal 14px/1 FontAwesome; font-size: 18px; line-height: 30px; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; -webkit-transition: all 0.3s ease-in-out; -moz-transition: all 0.3s ease-in-out; -ms-transition: all 0.3s ease-in-out; transition: all 0.3s ease-in-out; }
+form.search-form .input-group-btn button::before { content: "\f002"; color: #000; display: inline-block; font: normal normal normal 14px/1 "FontAwesome"; font-size: 18px; line-height: 30px; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; -webkit-transition: all 0.3s ease-in-out; -moz-transition: all 0.3s ease-in-out; -ms-transition: all 0.3s ease-in-out; transition: all 0.3s ease-in-out; }
 form.search-form .input-group-btn button:hover { background: #000; }
 form.search-form .input-group-btn button:hover, form.search-form .input-group-btn button:hover::before { color: #fff; }
 
@@ -128,13 +129,35 @@ form.search-form .input-group-btn button:hover, form.search-form .input-group-bt
 .search article .entry-title::after {}
 .search article .entry-meta { margin-bottom: 8px; }
 
+/* Comments*/
+.comments-area { margin-top: 30px; }
+.comments-area .comment-avatar { border-radius: 50%; }
+.comments-area .comment-author {  font-size: 14px; }
+.comments-area .comment-author a {  }
+.comments-area .comment-author a:hover {  }
+.comments-area span { display: inline-block; }
+.comments-area .comment-content span a { font-size: 12px; }
+.comments-area .comment-content p { margin-bottom: 10px; }
+.comments-area .comment-content p a { }
+.comments-area .comment-content p a:hover {  }
+.comment-reply, .children { padding-left: 10%; }
+.comment-body { margin-bottom: 30px; padding-bottom: 40px; border-bottom: 1px solid #eaeaea; }
+.comment-form { margin-bottom: 0; }
+.comment-form a { }
+.comment-form a:hover { }
+.comment-form .form-submit { margin-top: 30px; margin-bottom: 0; }
+.comment-form .form-submit input { }
+
 /* pagination */
-.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover,
-.pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover { color: #fff; background-color: #444; border-color: #444; }
-.pagination>li>a, .pagination>li>span { color: #366904; }
+.pagination { margin: 0 auto; border-radius: 0; }
+.pagination a { font-size: 14px; display: inline-block; color: #fff; width: 38px; height: 38px; line-height: 1.4; margin: 0 3px; text-align: center; border: 2px solid #eaeaea; border-radius: 2px !important; -webkit-transition: all 0.3s ease-in-out; -moz-transition: all 0.3s ease-in-out; -ms-transition: all 0.3s ease-in-out; -o-transition: all 0.3s ease-in-out; transition: all 0.3s ease-in-out; }
+.pagination a { color: #424242; vertical-align: middle; }
+.page-item.active .page-link { background: transparent; border-color: #424242; color: #424242; }
+.pagination a:hover { background-color: #424242; border-color: transparent; color: #fff; }
+.pagination a > i { font-size: 15px; }
 
 /* edit link */
-.btn.post-edit-link, .comments-link a { display: inline-block; font-size: 10px; line-height: 15px; color: #322f31; border: 1px solid #eaeaea; border-radius: 0; background: #eaeaea; padding: 3px 8px; margin-bottom: 0; text-decoration: none !important; text-transform: uppercase; text-shadow: none; }
+.btn.post-edit-link, .comments-link a { display: inline-block; font-size: 12px; color: #322f31; border: 0; background: #eaeaea; padding: 5px 8px; }
 .btn.post-edit-link:hover, .comments-link a:hover { background-color: #ccc; }
 
 /* 404 style */
@@ -158,30 +181,38 @@ form.search-form .input-group-btn button:hover, form.search-form .input-group-bt
 /* ------------------------------- */
 /* --------- media query --------- */
 /* ------------------------------- */
-@media (min-width: 1300px) {
+@media (min-width: 576px) {
 
 }
-@media (min-width: 1200px) {
-
-}
-@media (max-width: 1199px) {
-
-}
-@media (min-width: 992px) and (max-width: 1199px) {
+@media (min-width: 768px) {
 
 }
 @media (min-width: 992px) {
 
 }
-@media (max-width: 991px) {
-	.error-404 h1 { font-size: 120px; }
-	.error-404 h2 { font-size: 24px; }
+@media (min-width: 1200px) {
+
+}
+@media (min-width: 1300px) {
+
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+
 }
 @media (min-width: 768px) and (max-width: 991px) {
 
 }
-@media (min-width: 768px) {
+@media (min-width: 576px) and (max-width: 767px) {
 
+}
+
+@media (max-width: 1199px) {
+
+}
+@media (max-width: 991px) {
+	.error-404 h1 { font-size: 120px; }
+	.error-404 h2 { font-size: 24px; }
 }
 @media (max-width: 767px) {
 
@@ -190,12 +221,6 @@ form.search-form .input-group-btn button:hover, form.search-form .input-group-bt
 	article .alignright, article .alignleft { display: block; float: none; width: auto; margin-top: 20px; }
 	article .alignright { margin-left: 0; }
 	article .alignleft { margin-right: 0; }
-}
-@media (min-width: 576px) and (max-width: 767px) {
-
-}
-@media (min-width: 576px) {
-
 }
 @media (max-width: 575px) {
 	.copyrights p, .website-by p { text-align: center; }

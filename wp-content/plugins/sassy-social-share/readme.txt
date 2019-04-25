@@ -1,13 +1,13 @@
 ﻿=== WordPress Social Sharing Plugin - Sassy Social Share ===
 Contributors: Heateor
 Donate link: https://www.heateor.com/donate/?action=Sassy+Social+Share
-Tags: social share, social sharing, social media share, share facebook, facebook social share, wordpress social share, share buttons, social share buttons, facebook like, twitter tweet, google +1, google plus share
+Tags: social share, social sharing, social media share, share facebook, facebook social share, wordpress social share, share buttons, social share buttons, facebook like, twitter tweet, whatsapp share, line share
 Requires at least: 2.5.0
-Tested up to: 5.1
-Stable tag: 3.2.17
+Tested up to: 5.1.1
+Stable tag: 3.2.22
 License: GPLv2 or later
 
-Slickest, Simplest and Optimized Share buttons. Facebook, Twitter, Google+, Pinterest, WhatsApp and over 100 more.
+Slickest, Simplest and Optimized Share buttons. Facebook, Twitter, Reddit, Pinterest, WhatsApp and over 100 more.
 
 == Description ==
 
@@ -44,7 +44,7 @@ This is the Simplest and Smoothest Social Sharing plugin with optimized and grea
 * **Mobile Responsiveness**
 * Compatible with **AMP**
 * Enable **Social Sharing at WooCommerce** products
-* **Official Like Buttons** (Faceboo Like, Twitter Tweet, Google +1 etc.)
+* **Official Like Buttons** (Faceboo Like, Twitter Tweet, Pinterest Save etc.)
 * **Widgets and Shortcodes**
 * Compatible with BuddyPress, BBPress, WooCommerce
 * Multisite Compatible
@@ -69,7 +69,6 @@ This is the Simplest and Smoothest Social Sharing plugin with optimized and grea
 * <a target="_blank" href="http://support.heateor.com/category/sassy-social-share">Customization</a>
 * <a target="_blank" href="https://www.heateor.com">About Us</a>
 * <a target="_blank" href="https://www.facebook.com/Heateor">Our Facebook Page</a>
-* <a target="_blank" href="https://plus.google.com/+Heateor">Our GooglePlus Page</a>
 * <a target="_blank" href="https://twitter.com/Heateor">Our Twitter Page</a>
 * <a target="_blank" href="http://support.heateor.com">Support Documentation</a>
 * <a target="_blank" href="https://www.heateor.com/social-analytics-sharing">Social Analytics</a>
@@ -124,6 +123,30 @@ Yes, we can help you with it. Just drop an email at support[at]heateor[dot]com
 4. **Universal Sharing Popup**: Universal Sharing popup having all the supported sharing and bookmarking services
 
 == Changelog ==
+= 3.2.22 =
+* [New] Added Telegram in social media follow icons
+* [Bugfix] Performance improvement
+
+= 3.2.21 =
+* [Bugfix] Share counts were reduced significantly in some cases after last update
+
+= 3.2.20 =
+* [Bugfix] Facebook shares were not working because of the expiration of Facebook API v2.8
+* [Bugfix] Fixed a PHP error occurring when floating share bar enabled via shortcode
+* [Improvement] Share counts are loading faster
+
+= 3.2.19 =
+* [Bugfix] Social shares for the homepage were reset to 0 after last update in some cases
+* [Bugfix] Minor bugfixes
+
+= 3.2.18 =
+* [Bugfix] Tumblr share stopped working
+* [Bugfix] Querystring parameter in the url was causing changes in the share counts for the webpage
+* [Improvement] Line share now works with the devices that doesn't support Line app
+* [Improvement] Removed Google+ from social share and social media follow icons
+* [Improvement] Removed white background from the slider arrow below the floating share icons
+* [Improvement] Applied white background to the total shares in the horizontal floating sticky share bar
+
 = 3.2.17 =
 * [Bugfix] Previous update was generating Javascript error when Whatsapp share icon was not enabled
 
@@ -709,3 +732,27 @@ Yes, we can help you with it. Just drop an email at support[at]heateor[dot]com
 
 = 3.2.17 =
 * [Bugfix] Previous update was generating Javascript error when Whatsapp share icon was not enabled
+
+= 3.2.18 =
+* [Bugfix] Tumblr share stopped working
+* [Bugfix] Querystring parameter in the url was causing changes in the share counts for the webpage
+* [Improvement] Line share now works with the devices that doesn't support Line app
+* [Improvement] Removed Google+ from social share and social media follow icons
+* [Improvement] Removed white background from the slider arrow below the floating share icons
+* [Improvement] Applied white background to the total shares in the horizontal floating sticky share bar
+
+= 3.2.19 =
+* [Bugfix] Social shares for the homepage were reset to 0 after last update in some cases
+* [Bugfix] Minor bugfixes
+
+= 3.2.20 =
+* [Bugfix] Facebook shares were not working because of the expiration of Facebook API v2.8
+* [Bugfix] Fixed a PHP error occurring when floating share bar enabled via shortcode
+* [Improvement] Share counts are loading faster
+
+= 3.2.21 =
+* [Bugfix] Share counts were reduced significantly in some cases after last update
+
+= 3.2.22 =
+* [New] Added Telegram in social media follow icons
+* [Bugfix] Performance improvement
