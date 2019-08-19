@@ -34,7 +34,7 @@ require_once("class-wpfront-scroll-top-options.php");
  */
 class WPFront_Scroll_Top {
     //Constants
-    const VERSION = '2.0.1';
+    const VERSION = '2.0.2';
     const OPTIONS_GROUP_NAME = 'wpfront-scroll-top-options-group';
     const OPTION_NAME = 'wpfront-scroll-top-options';
     const PLUGIN_SLUG = 'wpfront-scroll-top';
@@ -73,9 +73,6 @@ class WPFront_Scroll_Top {
         $this->iconsDIR = $this->pluginDIRRoot . 'images/icons/';
         
         add_action('plugins_loaded', array($this, 'plugins_loaded'));
-
-        add_action('wp_footer', array($this, 'write_markup'));
-        add_action('shutdown', array($this, 'shutdown_callback'));
         
         $this->add_activation_redirect();
         
@@ -83,9 +80,14 @@ class WPFront_Scroll_Top {
             add_action('admin_init', array($this, 'admin_init'));
             add_action('admin_menu', array($this, 'admin_menu'));
             add_filter('plugin_action_links', array($this, 'action_links'), 10, 2);
+            
+            add_action('admin_footer', array($this, 'write_markup'));
         } else {
             add_action('wp_enqueue_scripts', array($this, 'enqueue_styles'));
             add_action('wp_enqueue_scripts', array($this, 'enqueue_scripts'));
+            
+            add_action('wp_footer', array($this, 'write_markup'));
+            add_action('shutdown', array($this, 'shutdown_callback'));
         }
     }
     

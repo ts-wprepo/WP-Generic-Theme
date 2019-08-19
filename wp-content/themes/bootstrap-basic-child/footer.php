@@ -13,7 +13,13 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-6 col-md-3 col-s-3">
-							<div class="footer-logo"><a href="<?php echo esc_url(home_url('/')); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" rel="home"><img src="<?php echo get_field('footer_logo', 'option'); ?>" alt="<?php echo get_field('footer_logo_alt_text', 'option'); ?>"/></a></div>
+							<?php
+							$footer_logo_alt_text = get_field('footer_logo_alt_text', 'option');
+							$blog_name = get_bloginfo('name', 'display');
+							?>
+							<div class="footer-logo">
+								<a href="<?php echo esc_url(home_url('/')); ?>" title="<?php echo esc_attr($blog_name); ?>" rel="home"><img src="<?php echo get_field('footer_logo', 'option'); ?>" alt="<?php echo (!empty($footer_logo_alt_text)) ? $footer_logo_alt_text : esc_attr($blog_name); ?>"/></a>
+							</div>
 							<div class="footer-description"><?php dynamic_sidebar('footer-top-1'); ?></div>
 						</div>
 						<div class="col-sm-6 col-md-3 col-s-3">

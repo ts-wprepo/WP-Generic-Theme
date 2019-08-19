@@ -146,7 +146,7 @@ if( function_exists('acf_add_options_page') ) {
       'menu_slug'     => 'testimonials',
       'capability'    => 'edit_posts',
       'redirect'      => false,
-      'position'      => 25,
+      'position'      => 5,
       'icon_url'      => 'dashicons-format-quote'
    ));*/
 }
@@ -186,14 +186,27 @@ function generic_login_head() {
       </style>";
    }
 }
-/* Update Favicon Section */
-add_action( 'wp_head', 'favicon' );
-add_action( 'admin_head', 'favicon' );
-add_action( 'login_head', 'favicon' );
-function favicon() {
-   $fav_icon = get_field('favicon', 'option');
-   $favicon = ($fav_icon != '') ? $fav_icon : get_stylesheet_directory_uri()."/img/favicon/favicon.ico"; 
-   if($favicon != '') echo '<link rel="shortcut icon" type="image/png" sizes="32x32" href="'.$favicon.'"/><link rel="apple-touch-icon" sizes="180x180" href="'.get_stylesheet_directory_uri().'/img/favicon/apple-touch-icon.png">';
+add_filter( 'login_headerurl', 'generic_login_url' );
+function generic_login_url() {
+   return home_url();
+}
+/* changing the alt text on the logo to show your site name */
+add_filter( 'login_headertitle', 'generic_login_title' );
+function generic_login_title() {
+   return get_option( 'blogname' );
+}
+/* Update password protected login page */
+add_action( 'password_protected_login_head', 'generic_login_head', 10, 2 );
+add_action( 'password_protected_before_login_form', 'password_protected_login_custom_message' , 10, 2 );
+function password_protected_login_custom_message() {
+   $pp_message = get_field('password_protected_page_message', 'option');
+   $message_html = '';
+   if(!empty(trim($pp_message))) {
+      $message_html .= '<div class="message password-protected-info">';
+         $message_html .= $pp_message;
+      $message_html .= '</div>';
+   }
+   echo $message_html;
 }
 
 function all_year() {
@@ -246,7 +259,7 @@ function get_social_links($classes = '') {
       $links .= '<ul class="social-links '.$classes.'">';
       while( have_rows('social_links', 'option') ): the_row();
          $links .= '<li>';
-            $links .= '<a href="'.get_sub_field('link').'" class="link"><span class="icon">'.get_sub_field('icon').'</span></a>';
+            $links .= '<a href="'.get_sub_field('link').'" class="link" target="_blank"><span class="icon">'.get_sub_field('icon').'</span></a>';
          $links .= '</li>';
       endwhile;
       $links .= '</ul>';
@@ -418,7 +431,8 @@ function get_banner(){
       $header_default_img = get_field('page_header_default_image', 'options');
       $header_bg_color = get_field('page_header_background_color', 'options');
       $headers_overlay = get_field('page_headers_overlay', 'options');
-      $page_header_image = get_field('page_header_image', $post_id);
+      $page_header_image = get_field('ph_image', $post_id);
+      $image_position = get_field('ph_image_position', $post_id);
       $header_style = '';
       if(!empty($page_header_image)) {
          $header_img = $page_header_image;
@@ -432,7 +446,7 @@ function get_banner(){
       $banner .= '<div class="page-header-bar'.($headers_overlay ? ' header-overlay': '').'"'.$header_style.'>';
          $banner .= '<div class="container">';
             $banner .= '<div class="heading-strip">';
-               $banner .= '<h1 class="">';
+               $banner .= '<h1>';
                   if(is_404()):
                      $banner .= "Page not found";
                   elseif(is_search()):
@@ -479,4 +493,108 @@ function get_testimonials() {
    return $content;
 }
 add_shortcode('do_testimonials', 'get_testimonials');
+
+/*dynamic custom post*/
+function custom_post_type() {
+   /**
+   * use multiple array for each custom post.
+   * enable the post array and use it.
+   */
+   $custom_post_type_array = array(
+      /*array(
+         'post_type' => 'service',
+         'singular_name' => 'Service',
+         'plural_name' => 'Services',
+         'menu_icon' => 'dashicons-admin-tools',
+         'taxonomies' => array('services-category'),
+         'taxonomy_array' => array(
+            array('slug' => 'service-category', 'singular_name' => 'Category', 'plural_name' => 'Categories')
+         )
+      )*/
+   );
+   if(!empty($custom_post_type_array) && is_array($custom_post_type_array)) {
+      foreach($custom_post_type_array as $key => $value) {
+         $labels = array(
+            'name'                  => _x( $value['plural_name'], 'Post Type General Name', 'text_domain' ),
+            'singular_name'         => _x( $value['singular_name'], 'Post Type Singular Name', 'text_domain' ),
+            'menu_name'             => __( $value['plural_name'], 'text_domain' ),
+            'name_admin_bar'        => __( 'Post Type', 'text_domain' ),
+            'parent_item_colon'     => __( 'Parent '.$value['singular_name'].':', 'text_domain' ),
+            'all_items'             => __( 'All '.$value['plural_name'].'', 'text_domain' ),
+            'add_new_item'          => __( 'Add New '.$value['singular_name'].'', 'text_domain' ),
+            'add_new'               => __( 'New '.$value['singular_name'].'', 'text_domain' ),
+            'new_item'              => __( 'New Item', 'text_domain' ),
+            'edit_item'             => __( 'Edit '.$value['singular_name'].'', 'text_domain' ),
+            'update_item'           => __( 'Update '.$value['singular_name'].'', 'text_domain' ),
+            'view_item'             => __( 'View '.$value['singular_name'].'', 'text_domain' ),
+            'search_items'          => __( 'Search '.$value['singular_name'].'', 'text_domain' ),
+            'not_found'             => __( 'No '.strtolower($value['singular_name']).' found', 'text_domain' ),
+            'not_found_in_trash'    => __( 'No '.strtolower($value['singular_name']).' found in Trash', 'text_domain' ),
+            'items_list'            => __( 'Items list', 'text_domain' ),
+            'items_list_navigation' => __( 'Items list navigation', 'text_domain' ),
+            'filter_items_list'     => __( 'Filter items list', 'text_domain' ),
+         );
+         $args = array(
+            'label'                 => __( $value['singular_name'], 'text_domain' ),
+            'description'           => __( $value['singular_name'].' information pages', 'text_domain' ),
+            'labels'                => $labels,
+            'supports'              => array( 'title', 'editor', 'excerpt', 'thumbnail', 'custom-fields' ),
+            'hierarchical'          => true,
+            'public'                => true,
+            'show_ui'               => true,
+            'show_in_menu'          => true,
+            'menu_icon'             => $value['menu_icon'],
+            'menu_position'         => 5,
+            'show_in_admin_bar'     => true,
+            'show_in_nav_menus'     => true,
+            'can_export'            => true,
+            'has_archive'           => true,
+            'exclude_from_search'   => false,
+            'publicly_queryable'    => true,
+            'capability_type'       => 'page',
+            'taxonomies'            => $value['taxonomies']
+         );
+         register_post_type( $value['post_type'], $args );
+         
+         // Register Taxonomies for Category
+         if( isset($value['taxonomy_array']) && !empty($value['taxonomy_array']) ) {
+            $custom_taxonomy_array = $value['taxonomy_array'];
+            custom_taxonomy( $custom_taxonomy_array, $value['post_type'] );
+         }
+      }
+   }
+}
+/**
+*enable it if you need re register custom post
+*/
+// add_action( 'init', 'custom_post_type', 0 );
+
+function custom_taxonomy($taxonomy, $post_type){
+   foreach($taxonomy as $key => $value) {
+      $labels = array(
+         'name'              => _x( $value['plural_name'], 'taxonomy general name', 'textdomain' ),
+         'singular_name'     => _x( $value['singular_name'], 'taxonomy singular name', 'textdomain' ),
+         'search_items'      => __( 'Search '.$value['plural_name'], 'textdomain' ),
+         'all_items'         => __( 'All '.$value['plural_name'], 'textdomain' ),
+         'parent_item'       => __( 'Parent '.$value['singular_name'], 'textdomain' ),
+         'parent_item_colon' => __( 'Parent '.$value['singular_name'].":", 'textdomain' ),
+         'edit_item'         => __( 'Edit '.$value['singular_name'], 'textdomain' ),
+         'update_item'       => __( 'Update '.$value['singular_name'], 'textdomain' ),
+         'add_new_item'      => __( 'Add New '.$value['singular_name'], 'textdomain' ),
+         'new_item_name'     => __( 'New '.$value['singular_name'], 'textdomain' ),
+         'menu_name'         => __( $value['plural_name'], 'textdomain' ),
+      );
+
+      $args = array(
+         'hierarchical'      => true,
+         'labels'            => $labels,
+         'show_ui'           => true,
+         'show_admin_column' => true,
+         'query_var'         => true,
+         'rewrite'           => array( 'slug' => $value['slug']),
+      );
+
+      register_taxonomy( $value['slug'], array( $post_type ), $args );
+   }
+}
 ?>

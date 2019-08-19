@@ -250,15 +250,15 @@ function heateorSssVerticalCounterPreview(val){
 }
 
 function heateor_sss_toggle_fb_share_count_options() {
-    if(heateorSssHorizontalFacebookShareEnabled && (heateorSssHorizontalShares || heateorSssHorizontalTotalShares)){
-        jQuery('#heateor_sss_fb_share_count_options').css('display', 'table-row-group');
+    if(heateorSssHorizontalFacebookShareEnabled || heateorSssVerticalFacebookShareEnabled){
+        jQuery('#heateor_sss_fb_share_count_options').css('display', 'block');
     }else{
         jQuery('#heateor_sss_fb_share_count_options').css('display', 'none');
     }
-    if(heateorSssVerticalFacebookShareEnabled && (heateorSssVerticalShares || heateorSssVerticalTotalShares)){
-        jQuery('#heateor_sss_fb_vertical_share_count_options').css('display', 'table-row-group');
+    if(((heateorSssHorizontalFacebookShareEnabled && (heateorSssHorizontalShares || heateorSssHorizontalTotalShares)) || (heateorSssVerticalFacebookShareEnabled && (heateorSssVerticalShares || heateorSssVerticalTotalShares))) && heateorSssFacebookIDSecretNotSaved){
+        jQuery('.heateor_sss_fb_share_count_msg').css('display', 'table-row-group');
     }else{
-        jQuery('#heateor_sss_fb_vertical_share_count_options').css('display', 'none');
+        jQuery('.heateor_sss_fb_share_count_msg').css('display', 'none');
     }
 }
 

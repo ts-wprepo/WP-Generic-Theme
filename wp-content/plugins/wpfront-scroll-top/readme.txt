@@ -3,8 +3,8 @@ Contributors: syammohanm
 Donate link: http://wpfront.com/donate/
 Tags: scroll to top, back to top, scroll top, scroll up, wordpress scroll top
 Requires at least: 4.1
-Tested up to: 5.0
-Stable tag: 2.0.1
+Tested up to: 5.2
+Stable tag: 2.0.2
 Requires PHP: 5.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -52,6 +52,9 @@ Visit [WPFront Scroll Top FAQ](http://wpfront.com/scroll-top-plugin-faq/) page f
 1. Settings page. 
 
 == Changelog ==
+
+= 2.0.2 =
+* Fixes WordPress 5.2 site health, wp_version_check, conflict.
 
 = 2.0.1 =
 * Link to element.
@@ -127,6 +130,9 @@ Visit [WPFront Scroll Top FAQ](http://wpfront.com/scroll-top-plugin-faq/) page f
 * Initial release
 
 == Upgrade Notice ==
+
+= 2.0.2 =
+* Bug fix.
 
 = 2.0.1 =
 * New features added.

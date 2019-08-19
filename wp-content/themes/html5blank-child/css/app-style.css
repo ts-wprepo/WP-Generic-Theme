@@ -74,15 +74,15 @@ input[type=file] { max-width: 100%; }
 .website-by p { font-family: 'Arial', sans-serif; font-size: 14px; text-align: right; margin-bottom: 0px; }
 
 /* Contact form 7 UI fixes */
-span.wpcf7-not-valid-tip { /* display: none; */ color: #b51a2a; }
+span.wpcf7-not-valid-tip { /* display: none; */ color: #b51a2a; margin-top: 3px; font-size: 0.875em; }
 div.wpcf7-response-output { margin-top: 5em; text-align: center; }
-div.wpcf7-response-output { font-family: 'Arial'; font-size: 14px; line-height: 1.4em; color: #666; text-align: center; border-width: 1px; border-radius: 2px; padding: 8px 10px; margin: 12px 0 12px; }
+div.wpcf7-response-output { font-size: 1em; line-height: 1.4em; color: #666; text-align: center; border-width: 1px; border-radius: 2px; padding: 8px 10px; margin: 12px 0 12px; }
 div.wpcf7-response-output.wpcf7-validation-errors, div.wpcf7-response-output.wpcf7-acceptance-missing { color: #721c24; background-color: #f8d7da; border-color: #f5c6cb; }
 div.wpcf7-response-output.wpcf7-spam-blocked { color: #856404; background-color: #fff3cd; border-color: #ffeeba; }
 div.wpcf7-response-output.wpcf7-mail-sent-ng, div.wpcf7-response-output.wpcf7-mail-sent-ok { color: #155724; background-color: #d4edda; border-color: #c3e6cb; }
-
-.wpcf7-form .wpcf7-form-control-wrap { display: block; margin-bottom: 25px; width: 100%; position: relative; }
-.wpcf7-form label { margin-bottom: 5px; }
+.wpcf7-form .wpcf7-form-control-wrap { display: block; margin-bottom: 15px; width: 100%; position: relative; }
+.wpcf7-form .wpcf7-form-control-wrap input:not([type="submit"]):not([type="button"]):not([type="checkbox"]):not([type="radio"]), .wpcf7-form .wpcf7-form-control-wrap select, .wpcf7-form .wpcf7-form-control-wrap textarea { display: block; width: 100%; }
+.wpcf7-form label { margin-bottom: 5px; display: inline-block; }
 .wpcf7-form label em { color: #b51a2a; }
 .wpcf7-form input.wpcf7-submit {}
 .wpcf7-form input.wpcf7-submit:hover {}

@@ -35,7 +35,11 @@
 				<div class="container">
 					<div class="row flex-box align-middle">
 						<div class="header-cell site-branding flex-grow-1">
-							<a href="<?php echo esc_url(home_url('/')); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" rel="home"><img src="<?php echo get_field('header_logo', 'option'); ?>" alt="<?php echo get_field('logo_alt_text', 'option'); ?>"/></a>
+							<?php
+							$logo_alt_text = get_field('logo_alt_text', 'option');
+							$blog_name = get_bloginfo('name', 'display');
+							?>
+							<a href="<?php echo esc_url(home_url('/')); ?>" title="<?php echo esc_attr($blog_name); ?>" rel="home"><img src="<?php echo get_field('header_logo', 'option'); ?>" alt="<?php echo (!empty($logo_alt_text)) ? $logo_alt_text : esc_attr($blog_name); ?>"/></a>
 						</div><!--.site-branding-->
 						<div class="header-cell site-nav flex-grow-1">
 							<nav class="navbar navbar-default" role="navigation">
